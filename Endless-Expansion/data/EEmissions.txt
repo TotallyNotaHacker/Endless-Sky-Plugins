@@ -1,0 +1,150 @@
+# Korath Missions
+mission "Korath Refugee Mission 1"
+    minor
+    landing
+    name "Investigate Korath Transmissions"
+    description `Investigate the Korath Exile systems for the source of the mysterious transmissions.`
+    autosave
+    passengers 1
+    source "Setar Fort"
+    to offer
+        has "Wanderers: Sestor: Final: Patched: done"
+        not "missiondelay"
+    on enter "Kor Fel'tar"
+        dialog `You begin to catch faint signals coming from deeper into Korath space, perhaps you should look in a neighboring system.`
+    on enter "Kor En'lakfar"
+        dialog `You begin to catch faint signals coming from deeper into Korath space, perhaps you should look in a neighboring system.`
+    on enter "Kor Men"
+        dialog `The signal is getting stronger, but there's nothing in this system.`
+    on enter "Kor Ak'Mari"
+        dialog `When you jump into the system, you find a disabled korath being pummeled by two other korath. If you want to investigate further, you'll need to get rid of the other two korath ships first.`
+    on offer
+        conversation
+            `You're having your ship refueled when you feel a tap on your shoulder. You turn to see Rek standing behind you, with several Korath with her. She seems to have grown a few inches since you last saw her.`
+            `"<first> <last>, I am glad to have caught you." Rek said, extending her wings slightly in greetings. "I hope you're not too busy, there is a new matter that the Korath wish for you to look into."`
+            choice
+                `   "Yeah I've got time, what's up?"`
+                `   "Sorry, I'm in the middle of something."`
+                    defer
+                `   "Sorry, I'm not interested in helping the Korath."" (Ends EE Korath Content)`
+                    decline
+            `   "The Korath here have been getting faint distress signals coming from the Exile systems, it is the first time a long while since anyone had heard such a thing from there before. They wished to see if you would check to see what is occurring there."`
+            `   You nod and Rek comes aboard your ship, saying that it would be best if she tagged along for translation.`
+                accept
+    on decline
+        conversation
+            `Rek tilts her head in an expression you can only assume is disappointment before mimicking a human nod. She then returns to the other Korath to find someone else to help them.`
+    on defer
+        set "missiondelay"
+        event "missiondelaytimer" 10
+    npc kill
+        government "Korath"
+        personality nemesis heroic staying target plunders
+        system "Kor Ak'Mari"
+        fleet
+            names "korath"
+            variant
+                "Palavret" 2
+        on kill
+            dialog "You have destroyed the hostile Korath, now to investigate the signal coming from the disabled ship."
+    npc assist accompany
+        government "Korath Refugees"
+        personality unconstrained derelict target escort
+        system "Kor Ak'Mari"
+        fleet
+            names "korath"
+            variant
+                "Palavret"
+        on assist
+            conversation
+                `After docking with the Korath ship and opening the airlock, you open the door to the Korath ship to find several thermal repeaters pointed at you. The only reason you're not already dead yet is because the crew probably watched your battle with the other Korath. Rek quickly explains in their own language that you are here to help and repair their ship. The Korath happily welcome the assistance, requesting that you escort them to Efret space.`
+    on complete
+        payment 150000
+        conversation
+            `As you enter the atmosphere, several Efret interceptors lead you to a secluded landing pad where both you and the Korath ship land. You and Rek leave your ship, finding yourselves surrounded by soldiers, medical personnel, and diplomats.`
+            `The Korath you rescued are brought out of their ship, with the wounded being shuttled away and leaving only a few of the original crew left. As one of the Korath speaks with a diplomat, Rek summarizes for you.`
+            `"These Korath you rescued are refugees, they rebelled and stole the ship after witnessing their kin take advantage of the Wanderer's kindness. They say there are more that wish to defect as well." She says, trying to keep up with the frantic pace of both the refugee's and the diplomat's speech.`
+            `"So what exactly are they looking for?" You ask.`
+            `"The leader of their movement wishes to overthrow the government of one of the stations, Septar Lorku. The negotiations between the Efret and this new Korath faction may take awhile. I will keep you updated if there are any developments." Rek said before bowing her head slightly. After that you finally get to the spaceport, you're starving. And with the payment coming in from the Efret government, you intend on buying out the first restaurant you find.`
+        set "missiondelay"
+        event "missiondelaytimer" 3
+
+mission "Korath Refugee Mission 2"
+    name "Meet with Rek"
+    description "Rek reached out to you, requesting you to visit her at <planet> as soon as possible."
+    destination "Setar Fort"
+    to offer
+        has "Korath Refugee Mission 1: done"
+        not "missiondelay"
+    on offer
+        conversation
+            `As you're leaving a booth advertising some bogus turret expansion you receive a message on your PDA. It's a message from Rek, requesting that you come to <planet> to assist her with the Korath Refugees.`
+                accept
+    on accept
+        event "korathtension"
+
+mission "Korath Refugee Mission 3"
+    landing
+    name "Visit the Quarg"
+    description "Rek requested that you go to Kuwaru Efreti and speak with the Quarg on behalf of the Korath Refugees."
+    source "Setar Fort"
+    destination "Kuwaru Efreti"
+    to offer
+        has "Korath Refugee Mission 2: done"
+        not "missiondelay"
+    on offer
+        conversation
+            `When you land and leave your ship, you see Rek has already come on to the landing pad.`
+            `   "<first> <last>, it is good that you have come." She said, quickly preening a few feathers after having rushed over here. "I am afraid the negotiations have run into a roadblock."`
+            choice
+                `   "What kind of roadblock?"`
+            `   "The Korath Efret worry about how the Quarg will react to them allowing former members of the Exiles to remain here, they are requesting that a middle man go to the Quarg on the refugees' behalf. And they believe that you would make the best candidate."`
+            choice
+                `   "Sure, I'll go there."`
+                    goto next
+                `   "Why can't you do it?"`
+            `   "Because it would be wiser for you, who are not seen as related to the Pug, to go on their behalf instead," she said.`
+                goto next
+            label next
+            `   She then hands you a small box, similar to one of the satellites you distributed before. "This will record your conversation with the Quarg, the Korath will want proof of the Quarg's words." You both say goodbye as you place the box in your pocket and you return to your ship.`
+                accept
+
+mission "Korath Refugee Mission 4"
+    landing
+    name "Quarg Negotiations"
+    description "You've spoken with the Quarg, now return to <planet>"
+    source "Kuwaru Efreti"
+    destination "Setar Fort"
+    to offer
+        has "Korath Refugee Mission 3: done"
+        not "missiondelay"
+    on offer
+        conversation
+            `When you land you try and find a Quarg who could help you. Eventually one stops to listen to what you have to say.`
+            `   "Salutations, have you a question?" You quickly explain how you found the Korath refugee ship, brought it to the Efret, and are now here to speak to the Quarg on the refugees' behalf. The Quarg listened, then slowly nodded before leading you through the halls of the ring world and having you wait in a small meeting room. After 20 minutes, what you think is a new Quarg arrives.`
+            `   "It is the understanding of this one that you wish to ensure the safety of the ones you call refugees?" You quickly nod your head and the Quarg slowly does the same. "It is of good fortune that some of the Exiles wish to no longer partake as their kin do, but wary one must be. Do you, of sound mind, know of the refugees' intentions?"`
+            choice
+                `   "They want to put an end to the Exile's violence."`
+                    goto violence
+                `   "They want to live in peace like the Efret."`
+                    goto peace
+            label violence
+            `   "Perhaps, but one must consider the ramifications of the toppling of regimes. Species that are young oft overlook peripheral consequences and motivations." The Quarg then stands from its seat.`
+            label peace
+            `   "Perhaps, and it is our hope that the Exiles finally journey to the path of wisdom like the Efreti. However, much work still remains to be done for this to transpire." The Quarg then stands from its seat.`
+            `   "The Quarg will not interfere with the migration of any Exile refugees, so long as the refugees do nothing to cause the Efreti harm, and henceforth forsake their knowledge and possession of their jump drives." And with that, the Quarg lead you back to your ship and send you on your way.`
+                accept
+    on complete
+        conversation
+            `When you land you're met with Rek and several Korath dressed in what appear to be officer uniforms.`
+            `   "So, <first> <last>, how did your meeting with the Quarg go?"`
+            choice
+                `   "Not bad, they said they would leave the refugees be. With conditions." (hand over the small box)`
+                    goto next
+            label next
+            `   "We suspected as much," she said as she took the box from you, "come, we must show them the contents of the recording."`
+            `   The Korath lead you and Rek to a large meeting room, where Korath from the Efret and a few you recognize from the refugee group sit. Rek speaks to them in their language for a moment before placing the box on the table, hooking it to the console in the center of the table and played the recording.`
+            `   The both the refugees and the Efret seem relieved at the Quarg's statements, but the refugees become uneasy when the Quarg states that it required them to forfeit their jump drives. Discussion begins between the two groups, with Rek attempting to act as a mediator. During a quick break in the discussion Rek looks back at you.`
+            `   "Sorry <first>, this may take awhile. Wait for me in the spaceport, I will come to you when we have decided on our next course of action." She then snapped back into being mediator just as the two groups began talking again.`
+
+            

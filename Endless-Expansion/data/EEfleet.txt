@@ -1,0 +1,9 @@
+fleet "deathfleet"
+	government "Debug"
+	names quarg
+	variant 100
+		"Wardragon"
+		"Shooting Star"
+		"Archon" 5
+		"vyu-Ir" 1
+		"Quarg Skylark" 10

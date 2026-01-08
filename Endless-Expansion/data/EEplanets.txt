@@ -1,0 +1,46 @@
+planet Debug
+	"display name" Debug Prime 
+	attributes Hai
+	landscape land/station48
+	description `You shouldn't be here unless you're the author of the plugin, you absolute goober. This is how I test the outfits. If you're here, that means you cheated.`
+	spaceport `The spaceport has all the necessities: wifi access, soda dispenser, and a minifridge. There's a fuel nozzle for ships you don't even recognize, whoever made this must have too much time on his hands. For an extra challenge and a lot of money, try and get tribute from this planet.`
+	outfitter "Debug"
+	outfitter "Basic Outfits"
+	outfitter "Common Outfits"
+	outfitter "Ammo North"
+	outfitter "Ammo South"
+	outfitter "Central Outfits Expansion"
+	outfitter "Northern Explorers"
+	outfitter "Deep Sky Basics"
+	outfitter "Deep Sky Advanced"
+	outfitter "Lovelace Basics"
+	outfitter "Lovelace Advanced"
+	outfitter "Lovelace Security"
+	outfitter "Delta V Basics"
+	outfitter "Delta V Advanced"
+	outfitter "Syndicate Basics"
+	outfitter "Syndicate Advanced"
+	outfitter "Syndicated Security"
+	outfitter "Kraz Basics"
+	outfitter "Kraz Advanced"
+	outfitter "FW Security"
+	shipyard "Kestrel"
+	security 1
+	tribute 1000000
+		fleet "deathfleet" 1
+		threshold 0
+
+planet Mercury
+	"display name" Mercury
+	attributes uninhabited
+	government Uninhabited
+	landscape landscape/EEmercury
+	description `Mercury has stood mostly untouched by humans during the space industrialization phase of humanity. A few drill probes dot the landscape, but the effort to draw the resources out of Mercury was seen as a waste of time compared to other opportunities.`
+	spaceport `Built by a (relatively) small company that has long since gone bankrupt, this spaceport has been fully abandoned. Most of its valuable components have been stripped out, either by scavengers or debt collectors trying to get a return on their investment. The fuel tanks haven't been refilled in centuries. The lights are only on still because no one saw fit to steal the nuclear battery yet.`
+planet Venus
+	"display name" Venus
+	attributes uninhabited "requires: noncorrosive"
+	government Uninhabited
+	landscape landscape/EEvenus
+	description `Venus has remained largely untouched by humanity. The thick clouds of sulfuric acid in the atmosphere combined with the unforgiving wasteland below and lack of harvestable resources have made Venus a complete lost cause.`
+

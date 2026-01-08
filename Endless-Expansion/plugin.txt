@@ -1,0 +1,5 @@
+name "Endless Expansion"
+about "This plugin adds a ton of stuff, read the Readme to see exactly what it adds."
+version "0.0.1"
+authors
+	"Hacksmerian"

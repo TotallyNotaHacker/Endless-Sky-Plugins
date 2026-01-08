@@ -1,0 +1,23 @@
+government "Debug"
+	swizzle 0
+	color "governments: Hai"
+	"player reputation" 0
+	"fine" 0
+
+government "Korath Refugees"
+	swizzle 4
+	color .49 .33 .69
+	language "Korath"
+	"crew attack" 1.1
+	"crew defense" 2.4
+	"attitude toward"
+		"Korath" .01
+		"Korath (Civilian)" .01
+		"Wanderer" .01
+		"Kor Efret" .01
+	"player reputation" 1
+	"send untranslated hails"
+	"friendly hail" "friendly kor efret untranslated"
+	"friendly disabled hail" "friendly disabled kor efret untranslated"
+	"hostile hail" "hostile kor efret untranslated"
+	"hostile disabled hail" "hostile disabled kor efret untranslated"

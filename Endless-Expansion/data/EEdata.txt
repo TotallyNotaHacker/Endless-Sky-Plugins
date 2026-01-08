@@ -1,0 +1,82 @@
+# Items in order:
+# Outfits
+# Outfitters
+# Ships
+# Shipyards
+# Events
+
+
+#Outfits
+outfit "Non-Corrosive Lining"
+	"cost" 75000
+	"mass" 5
+	category "Systems"
+	series "Special Systems"
+	index 01700
+	thumbnail "outfit/unknown"
+	"unplunderable" 1
+	"noncorrosive" 1
+	description "This protective lining is a thin plating that is bonded to the hull of your ship. It should protect you from even the harshest of corrosive atmospheres or oceans...probably."
+	description "This technology was developed by the Harrison Research Group in order to properly and safely inspect worlds."
+
+outfit "Extreme Temperature Insulation"
+	"cost" 120000
+	thumbnail "outfit/unknown"
+	"mass" 15
+	"outfit space" -5
+	category "Systems"
+	series "Special Systems"
+	index 01700
+	"tempprotection" 1
+	"unplunderable" 1
+	description "This insulation is designed to protect your ship from the harshest temperatures the galaxy can offer. You could even touch a star! (Note: you cannot touch a star)"
+	description "This technology was developed by the Harrison Research Group for work requiring close proximity to stars."
+
+outfit "Blink Drive"
+	"cost" 1000000
+	# change blink drive model in future
+	thumbnail "outfit/jump drive"
+	"mass" 20
+	"outfit space" -20
+	category "Systems"
+	series "Drives"
+	"jump drive" 1 
+	"jump range" 500
+	"jump speed" .8
+	description `This device operates under the same principles as the jump drive, however the range of the device is far greater than any other hyperdrive in the known universe.`
+
+outfit "Turret Mount Expansion"
+	# Doesn't function, don't bother trying to use it. Couldn't figure out a way to add new turrets to sprites. Yet.
+	cost 100000
+	mass 5
+	thumbnail "outfit/blue screwdriver"
+	category "Systems"
+	series "Expansions"
+	"gun ports" -1
+	"turret mounts" 1
+	description `This attachment isn't recommended by your ship's manufacturer, but that never stopped you from strapping alien technology to your ship before so why not a full hull modification?`
+
+# Outfitters
+outfitter "Harrison Basics"
+	"Extreme Temperature Insulation"
+	"Non-Corrosive Lining"
+
+outfitter "Debug"
+	"Blink Drive"
+	"Extreme Temperature Insulation"
+	"Non-Corrosive Lining"
+	"Turret Mount Expansion"
+
+# Events
+
+event "missiondelaytimer"
+	# Used to put delays between missions or to delay mission requests. Input number equals days needed to pass.
+	clear "missiondelay"
+
+event "korathtension"
+	government "Korath Refugees"
+		"attitude toward"
+			"Korath" -.01
+	government "Korath Exiles"
+		"attitude toward"
+			"Korath Refugees" -.01
